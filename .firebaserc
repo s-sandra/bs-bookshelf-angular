@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "barcode-scan-bookshelf",
+    "bs-bookshelf": "barcode-scan-bookshelf"
+  }
+}

@@ -1,0 +1,37 @@
+<div class="toolbar">
+  <h1><b>BS</b> BookShelf</h1>
+  <img *ngIf="firebase.user" [src]="firebase.user.photoURL" class="avatar">
+  <div class="searchbar">
+    <mat-icon>search</mat-icon>
+    <input
+      placeholder="search by book title"
+      type="text"
+      (keydown.enter)="onSearch($event.target.value)"
+    >
+  </div>
+</div>
+<div class="spacer-search"></div>
+<div class="container" *ngIf="searchResult.length === 0">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <div
+    *ngIf="(!loading && isbn && searchResult.length === 0) ||
+            (!loading && searchPhrase &&
+            searchPhrase.length > 0 && searchResult.length === 0)"
+    class="placeholder">
+    <div class="message">
+      <mat-icon>search_off</mat-icon>
+      <h2>No Books Found</h2>
+      <p *ngIf="isbn">ISBN {{ isbn }}</p>
+    </div>
+  </div>
+  <div
+    *ngIf="!loading && !isbn && !searchPhrase && searchResult.length === 0"
+    class="placeholder">
+    <div class="message">
+      <mat-icon>crop_free</mat-icon>
+      <h2>Scan Book</h2>
+    </div>
+  </div>
+</div>
+<app-books *ngIf="searchResult.length > 0" [books]="searchResult" context="search"></app-books>
+<app-scanner (scanResult)="onScan($event)"></app-scanner>

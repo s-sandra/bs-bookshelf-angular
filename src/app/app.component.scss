@@ -1,0 +1,11 @@
+mat-toolbar { padding: 10px 0 20px 0; }
+
+mat-toolbar mat-icon {
+  font-size: 35px;
+  width: 30px;
+  height: 30px;
+}
+
+@media screen and (max-width: 450px) {
+  mat-toolbar-row button { margin: auto; }
+}

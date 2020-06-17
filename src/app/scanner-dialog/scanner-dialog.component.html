@@ -1,0 +1,19 @@
+<div class="overlay">
+  <div class="action-pane">
+    <button mat-icon-button role="button" (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <h2 *ngIf="!scanner.success">place barcode fully inside viewfinder</h2>
+    <h2 *ngIf="scanner.success">{{ scanner.status }}</h2>
+  </div>
+  <div class="scanner">
+    <zxing-scanner
+      [formats]="scanner.codeFormats"
+      *ngIf="!scanner.scanned && scanner.scanning"
+      (scanSuccess)="onScanSuccess($event)"
+      (scanError)="onScanError($event)"
+    ></zxing-scanner>
+    <mat-icon *ngIf="scanner.success">done</mat-icon>
+    <mat-progress-bar *ngIf="!scanner.success" mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>

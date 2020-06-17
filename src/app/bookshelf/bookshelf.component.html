@@ -1,0 +1,24 @@
+<div class="header">
+  <h1>My BookShelf</h1>
+  <img *ngIf="firebase.user" [src]="firebase.user.photoURL" class="avatar">
+</div>
+<div class="spacer"></div>
+<div class="container" *ngIf="!books || books.length === 0">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <div
+    *ngIf="!firebase.isExpired() && !loading && books.length === 0"
+    class="placeholder">
+    <a mat-icon-button href="/search">
+      <mat-icon>add</mat-icon>
+      <h2>Add Books</h2>
+    </a>
+  </div>
+  <div *ngIf="firebase.isExpired()" class="placeholder">
+    <button mat-icon-button type="button" (click)="firebase.signIn()">
+      <mat-icon>login</mat-icon>
+      <h2>Sign in with Google</h2>
+    </button>
+  </div>
+</div>
+<app-books [books]="books" context="bookshelf"></app-books>
+<app-scanner (scanResult)="onScan($event)"></app-scanner>

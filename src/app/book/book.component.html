@@ -1,0 +1,45 @@
+<img mat-card-image *ngIf="metadata.image;else noCover" class="card-img-top" [src]="metadata.image">
+<ng-template #noCover>
+  <div id="placeholder" mat-card-image>
+    <mat-icon>image_not_supported</mat-icon>
+  </div>
+</ng-template>
+<app-stars *ngIf="metadata.rating" [rating]="metadata.rating" alt="rating"></app-stars>
+<mat-card-header>
+  <mat-card-title>
+    <a [href]="metadata.bookLink" target="_blank">{{ title }}</a>
+    <span>
+      <button
+        *ngIf="overflow && toggled"
+        mat-icon-button
+        role="button"
+        (click)="showOverflow()"
+      ><mat-icon>more_horiz</mat-icon></button>
+      <button
+        *ngIf="overflow && !toggled"
+        mat-icon-button
+        role="button"
+        (click)="hideOverflow()">
+        <mat-icon>expand_less</mat-icon>
+      </button>
+    </span>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <div class="metadata">
+      <mat-icon alt="authors">person</mat-icon>
+      <span>
+        {{ metadata.authors ?
+          (metadata.authors.length > 50 ? (metadata.authors | slice:0:50) + " [...]" : metadata.authors)
+        : "No Author"}}
+      </span>
+    </div>
+    <div class="metadata">
+      <mat-icon alt="date published">copyright</mat-icon>
+      <span>{{ metadata.date ? (metadata.date | date) : "No Date"}}</span>
+    </div>
+    <div class="metadata">
+      <mat-icon alt="publisher">local_library</mat-icon>
+      <span>{{ metadata.publisher }}</span>
+    </div>
+  </mat-card-subtitle>
+</mat-card-header>

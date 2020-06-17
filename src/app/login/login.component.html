@@ -1,0 +1,18 @@
+<div class="landing title">
+  <mat-icon>menu_book</mat-icon>
+  <h1>BARCODE SCAN <div class="subtitle">BookShelf</div></h1>
+</div>
+<div class="login">
+  <div *ngIf="firebase.user;else login">
+    <button mat-raised-button type="button" (click)="onSignOut()">
+      <fa-icon [icon]="logoGoogle"></fa-icon>
+      <span>Sign out from Google</span>
+    </button>
+  </div>
+  <ng-template #login>
+    <button mat-raised-button type="button" (click)="onSignIn()">
+      <fa-icon [icon]="logoGoogle"></fa-icon>
+      <span>Sign in with Google</span>
+    </button>
+  </ng-template>
+</div>

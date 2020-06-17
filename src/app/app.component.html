@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button
+      *ngIf="firebase.user;else login"
+      routerLink="/"
+      mat-button>
+      <mat-icon>logout</mat-icon>
+      <div>Sign Out</div>
+    </button>
+    <ng-template #login>
+      <button routerLink="/" mat-button>
+        <mat-icon>login</mat-icon>
+        <div>Sign In</div>
+      </button>
+    </ng-template>
+    <button routerLink="/search" mat-button>
+      <mat-icon>search</mat-icon>
+      <div>Search</div>
+    </button>
+    <button *ngIf="firebase.user" routerLink="/bookshelf" mat-button>
+      <mat-icon>library_books</mat-icon>
+      <div>My Bookshelf</div>
+    </button>
+    <img *ngIf="firebase.user" class="avatar" [src]="firebase.user.photoURL">
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
+

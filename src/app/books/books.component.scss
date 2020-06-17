@@ -1,0 +1,42 @@
+mat-card { width: 20em; }
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  border-top: lightgrey solid 1px;
+  width: 90%;
+  margin-left: 10px;
+}
+
+#add { margin-bottom: 16px; }
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: auto;
+  padding: 2em 0 2em 0;
+
+
+  @media screen and (min-width: 1660px) {
+    width: 80%;
+    margin-left: 3vw;
+  }
+
+  @media screen and (max-width: 450px) {
+    padding: 0 0 5em 0;
+  }
+}
+
+.tile {
+  flex-basis: 20em;
+  margin: 2em;
+}
+
+.badge { width: 8em; }
+
+button mat-icon {
+  font-size: 35px;
+  width: 35px;
+  color: var(--color-primary);
+}

@@ -1,0 +1,116 @@
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #e9e8e8;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle { stroke: grey; }
+mat-spinner { margin: auto; }
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+  margin-left: auto; // float to the left
+  order: 2;  // don't push other elements in same container
+}
+
+.placeholder {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+
+  h2, mat-icon {
+    color: grey;
+    font-weight: normal;
+  }
+
+  .message h2 { margin: 0; }
+  h2 { font-size: 25px; }
+
+  mat-icon {
+    font-size: 130px;
+    width: 130px;
+  }
+
+  button h2 { margin-top: 40px; }
+  .mat-icon-button { width: 100%; }
+}
+
+.toolbar, .header {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 2em;
+  width: 100%;
+  -webkit-box-shadow: 0 4px 15px -5px #000000;
+  -moz-box-shadow:    0 4px 15px -5px #000000;
+  box-shadow:         0 4px 15px -5px #000000;
+}
+
+.header { padding: 0; }
+h1, .header { margin: 0; }
+.toolbar h1 { margin: 0.67em 0 0.67em 0; }
+
+mat-toolbar, .toolbar, .header {
+  position: fixed;
+  z-index: 2;
+}
+
+@media screen and (max-width: 450px) {
+
+  mat-toolbar {
+    bottom: 0;
+    height: 25px;
+    -webkit-box-shadow: 0px 2px 10px #000000;
+    -moz-box-shadow:    0px 2px 10px #000000;
+    box-shadow:         0px 2px 10px #000000;
+  }
+
+  .header h1 { padding: 0.65em 0.5em 0.5em 0.9em; }
+  mat-toolbar-row .avatar { display: none; }
+  .spacer-search { height: 24%; }
+  .spacer { height: 13%; }
+  .mat-fab { bottom: 70px; }
+
+  h1 + .avatar {
+    display: block;
+    top: 15px;
+    position: fixed;
+    right: 20px;
+    z-index: 1;
+  }
+
+  .toolbar {
+    padding-top: 0;
+    width: 85%;
+  }
+}
+
+@media screen and (min-width: 451px) {
+  mat-toolbar { top: 0; }
+  .toolbar { padding: 0 1em 1em 2em; }
+  .header, .toolbar { top: 84px; }
+  .header h1 { padding: 0.65em 0 0.5em 0.9em; }
+  h1 + .avatar { display: none; }
+  .spacer-search { height: 20%; }
+  .spacer { height: 15%; }
+  .mat-fab { bottom: 15px; }
+}
+
+.spacer + .container { height: 40%; }
+
+.container {
+  display: flex;
+  height: 77%;
+  align-items: center;
+}
+
+.mat-fab {
+  position: fixed !important;
+  z-index: 2;
+  left: 15px;
+}
