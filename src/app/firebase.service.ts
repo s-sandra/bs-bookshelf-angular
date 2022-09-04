@@ -66,15 +66,15 @@ export class FirebaseService {
    */
   async signIn() {
     try {
-        const result = await this.fireAuth.signInWithPopup(this.provider);
-        if (result.credential) {
-          this.setCredentials(result.credential as auth.OAuthCredential);
-        }
-        this.router.navigate(['search']);
+      const result = await this.fireAuth.signInWithPopup(this.provider);
+      if (result.credential) {
+        this.setCredentials(result.credential as auth.OAuthCredential);
+      }
+      this.router.navigate(['search']);
     }
     catch (error) {
-        console.error('Unable to sign in:', error.message);
-        this.popup.show('An error occurred! Unable to sign in.');
+      console.error('Unable to sign in:', error.message);
+      this.popup.show('An error occurred! Unable to sign in.');
     }
   }
 
